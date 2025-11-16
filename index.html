@@ -14,9 +14,9 @@
 
   <style>
     :root {
-      --bg: #050814;
-      --bg-alt: #0D1220;
-      --bg-soft: #101727;
+      --bg: #070b19;
+      --bg-alt: #101629;
+      --bg-soft: #11192b;
       --accent: #00D3A7;
       --accent-soft: rgba(0, 211, 167, 0.15);
       --accent-warm: #FF9F43;
@@ -55,9 +55,7 @@
     /* HEADER / HERO */
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: relative; /* non-sticky */
       background: linear-gradient(to right, rgba(5, 8, 20, 0.96), rgba(5, 8, 20, 0.92));
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -127,7 +125,7 @@
     }
 
     .hero {
-      padding: 3rem 0 3.5rem;
+      padding: 2.25rem 0 2.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
 
@@ -139,18 +137,18 @@
     }
 
     .hero-kicker {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.17em;
+      letter-spacing: 0.16em;
       color: var(--accent);
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.35rem;
     }
 
     .hero-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.4rem;
-      line-height: 1.2;
-      margin: 0 0 0.75rem;
+      font-size: 1.9rem;
+      line-height: 1.3;
+      margin: 0 0 0.6rem;
     }
 
     .hero-highlight {
@@ -158,28 +156,14 @@
     }
 
     .hero-subtitle {
-      margin: 0 0 1.1rem;
+      margin: 0 0 0.9rem;
       color: var(--text-muted);
-      font-size: 0.98rem;
-      max-width: 36rem;
-    }
-
-    .hero-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-      color: var(--text-muted);
-    }
-
-    .hero-metric-item strong {
-      font-size: 1.05rem;
-      color: #ffffff;
+      font-size: 0.95rem;
+      max-width: 32rem;
     }
 
     .hero-actions {
-      margin-top: 1.6rem;
+      margin-top: 1.2rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
@@ -232,19 +216,20 @@
     }
 
     .hero-cert-card {
-      background: radial-gradient(circle at top left, #182233 0, #0b111f 55%, #070a15 100%);
+      background: #0c1220;
       border-radius: 16px;
-      padding: 1.6rem 1.4rem;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(158, 173, 210, 0.45);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
     }
 
     .hero-cert-title {
-      font-size: 0.84rem;
-      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 0.5rem;
+      color: var(--text-main);
+      opacity: 0.9;
+      margin-bottom: 0.55rem;
     }
 
     .cert-grid {
@@ -257,12 +242,13 @@
     .cert-pill {
       border-radius: 999px;
       padding: 0.45rem 0.75rem;
-      background: rgba(11, 19, 37, 0.9);
-      border: 1px solid rgba(158, 173, 210, 0.4);
+      background: rgba(11, 19, 37, 0.95);
+      border: 1px solid rgba(158, 173, 210, 0.5);
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       white-space: nowrap;
+      color: var(--text-main);
     }
 
     .cert-badge-dot {
@@ -761,7 +747,7 @@
       }
 
       .hero-title {
-        font-size: 2rem;
+        font-size: 1.7rem;
       }
 
       .certifications-grid {
@@ -832,14 +818,6 @@
               I turn scattered leads, jobs, invoices, and spreadsheets into a coherent system—so you can
               see your numbers and trust your operations.
             </p>
-            <div class="hero-metrics">
-              <div class="hero-metric-item">
-                <strong>52</strong> leads saved · <strong>12</strong> jobs booked in 4 months from one pipeline
-              </div>
-              <div class="hero-metric-item">
-                <strong>10+ hrs</strong>/month reporting time saved · <strong>5–10</strong> errors avoided
-              </div>
-            </div>
             <div class="hero-actions">
               <button type="button" class="cta-button" onclick="openQuoteModal()">
                 Book a 15-minute fit call →
@@ -949,14 +927,14 @@
             </div>
             <div class="cert-title">Xero Payroll Specialist – AU</div>
             <div class="cert-meta">
-              Payroll configuration & processing · Australian context
+              Payroll configuration &amp; processing · Australian context
             </div>
           </article>
 
           <!-- Xero Certified Associate L1 -->
           <article class="cert-card">
             <div class="cert-logo-wrap">
-              <!-- placeholder; replace with your L1 badge if you export one -->
+              <!-- replace src with your L1 badge -->
               <img src="images/xero-level1-badge.png" alt="Xero Certified Associate Level 1 badge" class="cert-logo">
             </div>
             <div class="cert-title">Xero Certified Associate · Level 1</div>
@@ -968,7 +946,7 @@
           <!-- Xero Certified Professional L2 -->
           <article class="cert-card">
             <div class="cert-logo-wrap">
-              <!-- placeholder; replace with your L2 badge if you export one -->
+              <!-- replace src with your L2 badge -->
               <img src="images/xero-level2-badge.png" alt="Xero Certified Professional Level 2 badge" class="cert-logo">
             </div>
             <div class="cert-title">Xero Certified Professional · Level 2</div>
@@ -1083,8 +1061,8 @@
         </p>
         <ul>
           <li><strong>Bookkeeping essentials</strong> — monthly Xero/QBO books, reconciliations, simple reporting, and light AR follow-up.</li>
-          <li><strong>Ops & finance bundle</strong> — bookkeeping plus inbox/lead handling, quote-to-cash workflow design, and KPI tracking.</li>
-          <li><strong>Systems & automation build-out</strong> — bespoke mix of finance ops, QA-style analytics, SOPs, and automations tailored to your environment.</li>
+          <li><strong>Ops &amp; finance bundle</strong> — bookkeeping plus inbox/lead handling, quote-to-cash workflow design, and KPI tracking.</li>
+          <li><strong>Systems &amp; automation build-out</strong> — bespoke mix of finance ops, QA-style analytics, SOPs, and automations tailored to your environment.</li>
         </ul>
         <button
           type="button"
