@@ -247,8 +247,9 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      white-space: nowrap;
-      color: var(--text-main);
+      max-width: 100%;
+      white-space: normal;       /* allow wrapping inside the pill */
+      justify-content: flex-start;
     }
 
     .cert-badge-dot {
@@ -256,6 +257,7 @@
       height: 7px;
       border-radius: 999px;
       background: var(--accent);
+      flex-shrink: 0;
     }
 
     .cert-note {
@@ -372,11 +374,12 @@
     }
 
     .cert-logo {
-      max-width: 88px;
-      max-height: 88px;
+      max-width: 100%;
+      max-height: 120px;
       width: auto;
       height: auto;
       object-fit: contain;
+      border-radius: 8px;
     }
 
     .cert-title {
@@ -705,6 +708,10 @@
       .certifications-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
@@ -907,51 +914,63 @@
         </p>
 
         <div class="certifications-grid">
-          <!-- QuickBooks Online ProAdvisor -->
+          <!-- Xero Certified Associate · Level 1 -->
           <article class="cert-card">
             <div class="cert-logo-wrap">
-              <!-- replace src with your hosted file path -->
-              <img src="images/qbo-online-badge.png" alt="QuickBooks Online ProAdvisor badge" class="cert-logo">
-            </div>
-            <div class="cert-title">QuickBooks Online Accountant Certification</div>
-            <div class="cert-meta">
-              ProAdvisor · Intuit QuickBooks · Dated 14 November 2025
-            </div>
-          </article>
-
-          <!-- Xero Payroll Specialist AU -->
-          <article class="cert-card">
-            <div class="cert-logo-wrap">
-              <!-- replace src with your hosted file path -->
-              <img src="images/xero-payroll-badge.png" alt="Xero Payroll Specialist AU badge" class="cert-logo">
-            </div>
-            <div class="cert-title">Xero Payroll Specialist – AU</div>
-            <div class="cert-meta">
-              Payroll configuration &amp; processing · Australian context
-            </div>
-          </article>
-
-          <!-- Xero Certified Associate L1 -->
-          <article class="cert-card">
-            <div class="cert-logo-wrap">
-              <!-- replace src with your L1 badge -->
-              <img src="images/xero-level1-badge.png" alt="Xero Certified Associate Level 1 badge" class="cert-logo">
+              <img
+                src="images/L1 Xero certified associate _ Xero_page-0001 (1).jpg"
+                alt="Xero Certified Associate Level 1 certificate — John Jevi dela Cruz"
+                class="cert-logo"
+              >
             </div>
             <div class="cert-title">Xero Certified Associate · Level 1</div>
             <div class="cert-meta">
-              Core Xero setup, banking, and day-to-day bookkeeping
+              Core Xero setup, banking, and day-to-day bookkeeping · Cert date 16/11/2025
             </div>
           </article>
 
-          <!-- Xero Certified Professional L2 -->
+          <!-- Xero Certified Professional · Level 2 -->
           <article class="cert-card">
             <div class="cert-logo-wrap">
-              <!-- replace src with your L2 badge -->
-              <img src="images/xero-level2-badge.png" alt="Xero Certified Professional Level 2 badge" class="cert-logo">
+              <img
+                src="images/XCL_PrintCertificate_page-0001.jpg"
+                alt="Xero Certified Professional Level 2 certificate — John Jevi dela Cruz"
+                class="cert-logo"
+              >
             </div>
             <div class="cert-title">Xero Certified Professional · Level 2</div>
             <div class="cert-meta">
-              Advanced workflows, reporting, and deeper configuration
+              Advanced workflows, reporting, and configuration · Cert date 16/11/2025
+            </div>
+          </article>
+
+          <!-- Xero Payroll Specialist – AU -->
+          <article class="cert-card">
+            <div class="cert-logo-wrap">
+              <img
+                src="images/Payroll specialist.png"
+                alt="Xero Payroll Specialist AU badge"
+                class="cert-logo"
+              >
+            </div>
+            <div class="cert-title">Xero Payroll Specialist – AU</div>
+            <div class="cert-meta">
+              Australian payroll setup, leave, and compliance
+            </div>
+          </article>
+
+          <!-- QuickBooks Online ProAdvisor -->
+          <article class="cert-card">
+            <div class="cert-logo-wrap">
+              <img
+                src="images/QB Online2X_7561.png"
+                alt="QuickBooks Online ProAdvisor badge"
+                class="cert-logo"
+              >
+            </div>
+            <div class="cert-title">QuickBooks Online Accountant Certification</div>
+            <div class="cert-meta">
+              Intuit QuickBooks Online ProAdvisor · 14/11/2025
             </div>
           </article>
         </div>
