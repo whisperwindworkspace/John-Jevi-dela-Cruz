@@ -2,1082 +2,442 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>John Jevi dela Cruz · Junior Accountant & FinOps Generalist</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Junior accountant and bookkeeping generalist working across Xero, QuickBooks, and payroll — with a bias for automation and clean systems."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Jevi dela Cruz | Operations, Bookkeeping & Automation</title>
+
+  <meta name="description" content="John Jevi dela Cruz helps service-based businesses clean up operations, bookkeeping, and automation. Xero Certified (L1 & L2), Xero Payroll Specialist AU, QuickBooks Online ProAdvisor. Inbox, leads, quotes, invoicing, payroll support, dashboards, and systems that actually run.">
+
   <link rel="canonical" href="https://your-domain-or-github-pages-url.example" />
 
-  <!-- Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-main: #050816;
-      --bg-elevated: rgba(16, 23, 41, 0.92);
-      --bg-soft: rgba(15, 23, 42, 0.88);
-      --bg-softer: rgba(15, 23, 42, 0.6);
-
-      --border-subtle: rgba(148, 163, 184, 0.2);
-      --border-strong: rgba(148, 163, 184, 0.35);
-
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.12);
-      --accent-strong: rgba(56, 189, 248, 0.5);
-      --accent-warm: #ff9f43;
-
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --text-soft: #6b7280;
-      --text-strong: #f9fafb;
-
-      --radius-lg: 18px;
-      --radius-xl: 22px;
-      --radius-pill: 999px;
-
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
-      --shadow-subtle: 0 16px 40px rgba(15, 23, 42, 0.75);
-      --shadow-glow: 0 0 55px rgba(56, 189, 248, 0.4);
-
-      --glass-gradient: radial-gradient(circle at top left, rgba(56, 189, 248, 0.3), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.45), transparent 55%);
-      --card-gradient: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.85));
+      --bg: #070b19;
+      --bg-alt: #101629;
+      --bg-soft: #11192b;
+      --accent: #00D3A7;
+      --accent-soft: rgba(0, 211, 167, 0.15);
+      --accent-warm: #FF9F43;
+      --text-main: #E5ECF5;
+      --text-muted: #9AA4C0;
+      --card-bg: #131a2b;
+      --border-soft: rgba(158, 173, 210, 0.35);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #020617 30%, #000 65%, #020617 100%);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      overflow-x: hidden;
-      position: relative;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, #101631 0, #050814 55%, #02030a 100%);
+      color: var(--text-main);
     }
 
-    /* Background grid + halo */
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(circle at top, rgba(56, 189, 248, 0.45), transparent 60%),
-        radial-gradient(circle at bottom, rgba(129, 140, 248, 0.25), transparent 55%);
-      opacity: 0.45;
-      pointer-events: none;
-      z-index: -3;
+    body.modal-open {
+      overflow: hidden;
     }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(
-          to right,
-          rgba(15, 23, 42, 0.8),
-          rgba(15, 23, 42, 0.4),
-          rgba(15, 23, 42, 0.8)
-        ),
-        linear-gradient(
-          to bottom,
-          rgba(15, 23, 42, 0.9),
-          rgba(15, 23, 42, 0.65),
-          rgba(15, 23, 42, 0.95)
-        );
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    .grid-overlay {
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(to right, rgba(148, 163, 184, 0.09) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-      background-size: 32px 32px;
-      opacity: 0.4;
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
+    body.modal-open #backToTop,
+    body.modal-open #audioToggle {
+      display: none;
     }
 
     .container {
-      width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.75rem;
     }
 
+    /* HEADER / HERO */
+
     header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.86),
-        rgba(15, 23, 42, 0.85),
-        rgba(15, 23, 42, 0.78),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      position: relative; /* non-sticky */
+      background: linear-gradient(to right, rgba(5, 8, 20, 0.96), rgba(5, 8, 20, 0.92));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     .nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.9rem 0;
-      gap: 1.5rem;
+      padding: 1rem 0 0.4rem;
     }
 
     .brand {
       display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .brand-pill {
-      width: 34px;
-      height: 34px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.92), rgba(56, 189, 248, 0.2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.7);
-    }
-
-    .brand-pill span {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #0f172a;
+      flex-direction: column;
+      gap: 0.1rem;
     }
 
     .brand-title {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      font-size: 0.95rem;
-      color: var(--text-strong);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 0.9rem;
-      font-size: 0.85rem;
-      color: var(--text-soft);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: inherit;
-      padding: 0.35rem 0.7rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid transparent;
-      transition: all 0.18s ease-out;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-      border-color: rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-    }
-
-    .nav-cta-label {
-      color: var(--text-soft);
-      display: none;
-    }
-
-    .nav-cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.38rem 0.9rem;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.85), rgba(56, 189, 248, 0.35));
-      color: #0b1220;
-      font-weight: 600;
+    .brand-sub {
       font-size: 0.78rem;
-      border: 1px solid rgba(56, 189, 248, 0.85);
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--text-muted);
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-weight: 500;
+      font-size: 0.9rem;
+      position: relative;
+      padding-bottom: 0.1rem;
     }
 
-    .nav-cta-pill:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.9);
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 1), rgba(56, 189, 248, 0.45));
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.2s ease;
     }
 
-    .nav-cta-pill span:last-child {
-      font-size: 1rem;
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .hero {
-      padding: 3.5rem 0 3.75rem;
+      padding: 2.25rem 0 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 2.75rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2.5rem;
       align-items: center;
     }
 
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.4), rgba(15, 23, 42, 0.95));
-      font-size: 0.76rem;
-      color: var(--text-soft);
-      max-width: max-content;
-      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22c55e, #0f172a);
-      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
-    }
-
-    .hero-eyebrow span {
-      opacity: 0.9;
+    .hero-kicker {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
     }
 
     .hero-title {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: clamp(2.2rem, 2.4rem + 0.7vw, 3rem);
-      line-height: 1.08;
-      letter-spacing: 0.02em;
-      color: var(--text-strong);
-      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
+      line-height: 1.3;
+      margin: 0 0 0.6rem;
     }
 
-    .hero-title span.highlight {
-      background: linear-gradient(120deg, #38bdf8, #22c55e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-highlight {
+      color: var(--accent);
     }
 
     .hero-subtitle {
+      margin: 0 0 0.9rem;
+      color: var(--text-muted);
       font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 33rem;
-      line-height: 1.6;
+      max-width: 32rem;
     }
 
-    .hero-pills {
+    .hero-actions {
+      margin-top: 1.2rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
-      font-size: 0.8rem;
+      gap: 0.75rem;
+      align-items: center;
     }
 
-    .pill {
+    .cta-button {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.32);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-    }
-
-    .pill strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .hero-meta-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.72rem;
-      color: var(--text-soft);
-    }
-
-    .hero-meta-value {
-      color: var(--text-main);
-    }
-
-    .hero-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
-    }
-
-    .primary-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.75rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.8);
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.6));
-      box-shadow: 0 0 32px rgba(56, 189, 248, 0.7);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #0b1220;
-      text-decoration: none;
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out;
-    }
-
-    .primary-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.9);
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(56, 189, 248, 0.9));
-    }
-
-    .primary-cta span:last-child {
-      font-size: 1rem;
-    }
-
-    .secondary-cta {
-      font-size: 0.82rem;
-      color: var(--accent);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      opacity: 0.9;
-    }
-
-    .secondary-cta span:last-child {
-      font-size: 1rem;
-    }
-
-    .hero-right {
-      position: relative;
-      height: 100%;
-      min-height: 280px;
-    }
-
-    .hero-panel {
-      position: relative;
-      border-radius: 22px;
-      background-image: var(--glass-gradient);
-      background-color: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: var(--shadow-soft), 0 0 0 1px rgba(148, 163, 184, 0.4);
-      padding: 1.1rem 1.1rem 1.1rem;
-      overflow: hidden;
-      min-height: 260px;
-    }
-
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.2), transparent 55%),
-        radial-gradient(circle at 100% 80%, rgba(99, 102, 241, 0.2), transparent 60%);
-      opacity: 0.85;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-    }
-
-    .panel-title {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .panel-title-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22c55e, #0f172a);
-      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
-    }
-
-    .panel-badges {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.72rem;
-    }
-
-    .panel-badge {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-soft);
-    }
-
-    .panel-body {
-      display: grid;
-      grid-template-columns: 1.1fr 1.1fr;
-      gap: 0.9rem;
-      align-items: stretch;
-    }
-
-    .panel-column {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .small-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-      margin-bottom: 0.2rem;
-    }
-
-    .metric-card {
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.75rem 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .metric-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.76rem;
-      color: var(--text-soft);
-    }
-
-    .metric-value {
-      font-size: 0.96rem;
-      font-weight: 500;
-      color: var(--text-main);
-    }
-
-    .metric-trend {
-      font-size: 0.72rem;
-      color: #22c55e;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
-
-    .metric-trend span:last-child {
-      font-size: 0.9rem;
-    }
-
-    .platform-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      font-size: 0.76rem;
-    }
-
-    .platform-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.26rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-soft);
-    }
-
-    .platform-pill strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    .focus-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
       gap: 0.45rem;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .focus-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .focus-dot {
-      width: 13px;
-      height: 13px;
+      padding: 0.8rem 1.6rem;
+      background: linear-gradient(135deg, #00D3A7, #00E3C2);
+      color: #050814;
+      text-decoration: none;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.2));
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 14px 40px rgba(0, 211, 167, 0.35);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+      font-size: 0.93rem;
     }
 
-    .panel-footer {
-      margin-top: 0.8rem;
-      padding-top: 0.7rem;
-      border-top: 1px dashed rgba(148, 163, 184, 0.4);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.72rem;
-      color: var(--text-soft);
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 50px rgba(0, 211, 167, 0.42);
+      filter: brightness(1.06);
     }
 
-    .panel-footer-left {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .panel-footer-tag {
-      padding: 0.16rem 0.5rem;
+    .cta-secondary {
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .panel-footer-pill {
-      padding: 0.16rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.5);
-      color: #bbf7d0;
+      border: 1px solid rgba(154, 164, 192, 0.5);
+      padding: 0.78rem 1.4rem;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.45rem;
+      text-decoration: none;
     }
 
-    .panel-footer-pill span:last-child {
-      font-size: 0.9rem;
+    .cta-secondary:hover {
+      border-color: var(--accent);
+      color: #ffffff;
     }
 
-    .panel-footer-right {
-      opacity: 0.9;
+    .hero-cert-card {
+      background: #0c1220;
+      border-radius: 16px;
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(158, 173, 210, 0.45);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
     }
 
-    .section {
-      padding: 2.2rem 0 2.4rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .section-title {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.5rem;
-      color: var(--text-strong);
-      margin: 0;
-    }
-
-    .section-subtitle {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      max-width: 28rem;
-      margin: 0;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      font-size: 0.76rem;
-      color: var(--text-soft);
-    }
-
-    .pill-row .pill {
-      border-radius: 999px;
-      padding: 0.26rem 0.7rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .pill-row .pill-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
-
-    .highlight-pill {
-      background: rgba(56, 189, 248, 0.1);
-      border-color: rgba(56, 189, 248, 0.5);
-      color: var(--text-main);
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .card {
-      border-radius: var(--radius-lg);
-      background: var(--card-gradient);
-      border: 1px solid var(--border-strong);
-      padding: 1.2rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.7rem;
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      color: var(--text-main);
-      margin: 0;
-    }
-
-    .card-subtitle {
-      font-size: 0.78rem;
-      color: var(--text-soft);
-      margin: 0.1rem 0 0;
-    }
-
-    .card-tag {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-soft);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
+    .hero-cert-title {
       font-size: 0.82rem;
-      color: var(--text-soft);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      opacity: 0.9;
+      margin-bottom: 0.55rem;
     }
 
-    .list-item {
-      display: flex;
-      gap: 0.55rem;
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem 1rem;
+      font-size: 0.84rem;
     }
 
-    .list-bullet {
-      margin-top: 0.18rem;
+    .cert-pill {
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      background: rgba(11, 19, 37, 0.95);
+      border: 1px solid rgba(158, 173, 210, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      max-width: 100%;
+      white-space: normal;       /* allow wrapping inside the pill */
+      justify-content: flex-start;
+    }
+
+    .cert-badge-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.2));
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
+      background: var(--accent);
       flex-shrink: 0;
     }
 
-    .list-content strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    .stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--text-soft);
-    }
-
-    .stack-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.7rem;
-      color: var(--text-soft);
-    }
-
-    .stack-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .stack-pill {
-      padding: 0.26rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.95);
-      font-size: 0.76rem;
+    .cert-note {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    .stack-pill strong {
-      color: var(--text-main);
-      font-weight: 500;
+    main {
+      padding-bottom: 3rem;
     }
 
-    .callout {
-      margin-top: 0.9rem;
-      padding: 0.7rem 0.9rem;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      display: flex;
-      gap: 0.6rem;
-      align-items: center;
-      font-size: 0.78rem;
-      color: var(--text-soft);
+    section {
+      padding: 3.75rem 0;
     }
 
-    .callout-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.2));
+    h2 {
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .section-subtitle {
+      margin: 0 0 2rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      font-size: 0.95rem;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .section-soft {
+      background: var(--bg-soft);
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    li + li {
+      margin-top: 0.2rem;
+    }
+
+    /* FEATURES */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-soft);
+    }
+
+    .feature-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--accent-soft);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
-      color: #0b1220;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
     }
+
+    .feature-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    /* CERTIFICATIONS SECTION */
 
     .certifications-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.1rem;
+      gap: 1.5rem;
     }
 
     .cert-card {
-      border-radius: 18px;
-      background: rgba(15, 23, 42, 0.94);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.85rem 0.85rem 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      box-shadow: var(--shadow-subtle);
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+      text-align: center;
     }
 
     .cert-logo-wrap {
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 80px;
-      overflow: hidden;
+      margin-bottom: 0.7rem;
     }
 
     .cert-logo {
       max-width: 100%;
-      max-height: 68px;
+      max-height: 120px;
+      width: auto;
       height: auto;
       object-fit: contain;
-      display: block;
+      border-radius: 8px;
     }
 
     .cert-title {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
     }
 
     .cert-meta {
-      font-size: 0.75rem;
-      color: var(--text-soft);
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 1.8rem;
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      margin-top: 0.3rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 0.1fr minmax(0, 1fr);
-      gap: 0.8rem;
-      align-items: flex-start;
-    }
-
-    .timeline-marker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      padding-top: 0.1rem;
-    }
-
-    .timeline-dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.95), rgba(56, 189, 248, 0.3));
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
-    }
-
-    .timeline-line {
-      flex: 1;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(148, 163, 184, 0.7), transparent);
-    }
-
-    .timeline-content {
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.8rem 0.95rem;
-      box-shadow: var(--shadow-subtle);
       font-size: 0.8rem;
-      color: var(--text-soft);
+      color: var(--text-muted);
     }
 
-    .timeline-role {
-      font-size: 0.84rem;
-      font-weight: 500;
-      color: var(--text-main);
-      margin-bottom: 0.1rem;
-    }
-
-    .timeline-meta {
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-meta span + span::before {
-      content: "•";
-      margin: 0 0.35rem;
-      color: rgba(148, 163, 184, 0.7);
-    }
-
-    .timeline-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .timeline-list li {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .timeline-list-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      margin-top: 0.25rem;
-      background: radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.9), rgba(56, 189, 248, 0.2));
-      flex-shrink: 0;
-    }
-
-    .timeline-list-text {
-      flex: 1;
-    }
-
-    .sidebar-card {
-      border-radius: 18px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.95rem;
-      box-shadow: var(--shadow-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    .sidebar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .sidebar-title {
-      font-size: 0.86rem;
-      color: var(--text-main);
-    }
-
-    .sidebar-pill {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.74rem;
-      color: var(--text-soft);
-    }
-
-    .sidebar-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .sidebar-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .sidebar-list-label {
-      color: var(--text-main);
-    }
-
-    .sidebar-list-value {
-      color: var(--text-soft);
-      font-size: 0.78rem;
-    }
-
-    .sidebar-footnote {
-      font-size: 0.74rem;
-      color: var(--text-soft);
-      opacity: 0.9;
-    }
+    /* TESTIMONIALS */
 
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .testimonial-card {
-      border-radius: 18px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.9rem;
-      box-shadow: var(--shadow-subtle);
-      font-size: 0.8rem;
-      color: var(--text-soft);
+      background: radial-gradient(circle at top left, #19233a 0, #0f1524 55%);
+      border-radius: 16px;
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      border: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
     }
 
-    .testimonial-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.4rem;
+    .testimonial-card::before {
+      content: '“';
+      position: absolute;
+      font-size: 3.2rem;
+      color: rgba(0, 211, 167, 0.16);
+      top: 0.1rem;
+      left: 0.6rem;
+    }
+
+    .testimonial-card blockquote {
+      margin: 0 0 1rem;
+      font-size: 0.92rem;
+      color: var(--text-main);
     }
 
     .testimonial-name {
-      font-size: 0.84rem;
-      color: var(--text-main);
-      font-weight: 500;
+      font-weight: 600;
+      display: block;
+      font-size: 0.9rem;
     }
 
     .testimonial-role {
-      font-size: 0.78rem;
-      color: var(--text-soft);
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
 
-    .testimonial-badge {
-      padding: 0.16rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.72rem;
-      color: var(--text-soft);
-    }
-
-    .testimonial-body {
-      line-height: 1.5;
-      margin-bottom: 0.4rem;
-    }
-
-    .testimonial-footer {
-      font-size: 0.74rem;
-      color: var(--text-soft);
-      opacity: 0.9;
-    }
+    /* FAQ */
 
     .faq-list {
       display: flex;
@@ -1086,139 +446,259 @@
     }
 
     .faq-item {
-      background: var(--bg-soft);
-      border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.8rem 0.9rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      box-shadow: var(--shadow-subtle);
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
     }
 
     .faq-question {
-      font-size: 0.86rem;
+      width: 100%;
+      padding: 0.9rem 1rem;
+      text-align: left;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.96rem;
+      font-weight: 600;
       color: var(--text-main);
-      font-weight: 500;
-      margin-bottom: 0.2rem;
+      cursor: pointer;
     }
+
+    .faq-icon {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      padding: 0 1rem 0.85rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    .modal-content {
+      background-color: #050814;
+      padding: 1.75rem 1.75rem 1.5rem;
+      border-radius: 16px;
+      max-width: 520px;
+      width: 100%;
+      max-height: calc(100vh - 3rem);
+      overflow-y: auto;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border-soft);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    label.required::after {
+      content: ' *';
+      color: var(--accent-warm);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.85rem;
+      border-radius: 6px;
+      border: 1px solid rgba(158, 173, 210, 0.6);
+      background: #050814;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.92rem;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(0, 211, 167, 0.4);
+    }
+
+    .error {
+      border-color: var(--accent-warm) !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: scale(0.96);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* BACK TO TOP + AUDIO */
+
+    #backToTop {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      background-color: #111728;
+      color: #ffffff;
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      width: 2.8rem;
+      height: 2.8rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        background-color 0.2s ease;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #backToTop:hover {
+      background-color: #1b2438;
+    }
+
+    #audioToggle {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background-color: #111728;
+      color: var(--text-main);
+      border: 1px solid var(--border-soft);
+      border-radius: 999px;
+      width: 2.8rem;
+      height: 2.8rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    #audioToggle:hover {
+      background-color: #171f34;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    /* FEATHERS */
+
+    .feather-icon {
+      position: absolute;
+      width: 40px;
+      opacity: 0.18;
+      animation: drift 14s infinite ease-in-out;
+      pointer-events: none;
+      filter: hue-rotate(40deg);
+    }
+
+    .feather-icon img {
+      width: 40px;
+      height: auto;
+    }
+
+    .feather-icon:nth-of-type(1) {
+      top: 12%;
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .feather-icon:nth-of-type(2) {
+      top: 30%;
+      left: 82%;
+      animation-delay: 4s;
+    }
+
+    .feather-icon:nth-of-type(3) {
+      top: 60%;
+      left: 18%;
+      animation-delay: 2s;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(28px) translateX(6px) rotate(12deg);
+      }
+      100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+    }
+
+    /* FOOTER */
 
     footer {
-      padding: 1.6rem 0 2rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.25);
-      margin-top: 1.5rem;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
+      text-align: center;
+      padding: 2rem 1.75rem 2.4rem;
+      background-color: #050814;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--text-soft);
+    footer p {
+      margin: 0.25rem 0;
     }
 
-    .footer-left {
-      max-width: 22rem;
-    }
+    /* RESPONSIVE */
 
-    .footer-left strong {
-      color: var(--text-main);
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .footer-brand-title {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.9rem;
-      color: var(--text-main);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .footer-links a {
-      color: var(--text-soft);
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      color: var(--text-main);
-    }
-
-    .footer-meta {
-      opacity: 0.85;
-    }
-
-    .footer-meta span + span::before {
-      content: "•";
-      margin: 0 0.3rem;
-      color: rgba(148, 163, 184, 0.7);
-    }
-
-    .audio-toggle {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-soft);
-      font-size: 0.8rem;
-      padding: 0.3rem 0.65rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      cursor: pointer;
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-    }
-
-    .audio-toggle-icon {
-      font-size: 1rem;
-    }
-
-    .audio-toggle:hover {
-      background: rgba(15, 23, 42, 0.98);
-      border-color: rgba(148, 163, 184, 0.7);
-      transform: translateY(-0.5px);
-    }
-
-    .audio-toggle-on {
-      color: var(--accent);
-      border-color: rgba(56, 189, 248, 0.8);
-      box-shadow: 0 0 24px rgba(56, 189, 248, 0.6);
-    }
-
-    .audio-toggle-label {
-      display: none;
-    }
-
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
 
-      .hero-right {
-        order: -1;
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-      }
-
-      .two-column {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .experience-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .hero-cert-card {
+        max-width: 420px;
       }
 
       .testimonials-grid {
@@ -1229,511 +709,208 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .nav-links {
-        display: none;
-      }
-
-      .nav-cta-label {
-        display: inline;
-      }
-
-      .footer-grid {
-        flex-direction: column;
-      }
-
-      .hero {
-        padding-top: 2.5rem;
+      .cert-grid {
+        grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
       .hero {
-        padding-top: 2.2rem;
+        padding-top: 2.4rem;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        gap: 0.6rem;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .features-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .certifications-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-title {
+        font-size: 1.2rem;
       }
 
       .hero-title {
-        font-size: 1.9rem;
-      }
-
-      .hero-panel {
-        min-height: 260px;
-      }
-
-      .panel-body {
-        grid-template-columns: minmax(0, 1fr);
+        font-size: 1.7rem;
       }
 
       .certifications-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
 
-      .testimonials-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .section {
-        padding: 1.8rem 0 2rem;
-      }
-
-      .footer-grid {
-        gap: 1rem;
-      }
-
-      .nav-cta-label {
-        display: none;
-      }
-
-      .audio-toggle-label {
-        display: inline;
-      }
-
-      .audio-toggle span:last-child {
-        display: none;
+      #backToTop,
+      #audioToggle {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.05rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="grid-overlay"></div>
+  <!-- Floating feathers -->
+  <div class="feather-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Feather_icon.svg"
+         alt=""
+         loading="lazy"
+         aria-hidden="true">
+  </div>
+  <div class="feather-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Feather_icon.svg"
+         alt=""
+         loading="lazy"
+         aria-hidden="true">
+  </div>
+  <div class="feather-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Feather_icon.svg"
+         alt=""
+         loading="lazy"
+         aria-hidden="true">
+  </div>
 
-  <!-- wired to assets/audio/futuristic-bg.mp3 -->
-  <audio id="bgAudio" src="assets/audio/futuristic-bg.mp3" loop muted></audio>
+  <audio id="bgAudio" src="" loop muted></audio>
 
   <header>
     <div class="container">
       <div class="nav-bar">
         <div class="brand">
-          <div class="brand-pill">
-            <span>JJ</span>
-          </div>
           <span class="brand-title">John Jevi dela Cruz</span>
+          <span class="brand-sub">Operations · Bookkeeping · Automation</span>
         </div>
-
-        <div class="nav-right">
-          <nav class="nav-links">
-            <a href="#experience">Experience</a>
-            <a href="#systems">Systems</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#faq">FAQ</a>
-          </nav>
-          <div class="nav-cta">
-            <span class="nav-cta-label">Open to part-time / remote</span>
-            <a href="#contact" class="nav-cta-pill">
-              <span>Contact</span>
-              <span>↗</span>
-            </a>
-          </div>
-        </div>
+        <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#why-choose-us">Why me</a>
+          <a href="#testimonials">Client notes</a>
+          <a href="#pricing">Packages</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
+
+      <section class="hero" aria-label="Intro">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-kicker">Ops · Bookkeeping · Systems</div>
+            <h1 class="hero-title">
+              I help service teams stop leaking time and revenue
+              by <span class="hero-highlight">fixing the back-end.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Xero Certified (L1 &amp; L2), Xero Payroll Specialist – AU, and QuickBooks Online ProAdvisor.
+              I turn scattered leads, jobs, invoices, and spreadsheets into a coherent system—so you can
+              see your numbers and trust your operations.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="cta-button" onclick="openQuoteModal()">
+                Book a 15-minute fit call →
+              </button>
+              <a href="#services" class="cta-secondary">
+                See what I actually do
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-cert-card" aria-label="Key certifications">
+            <div class="hero-cert-title">Key certifications</div>
+            <div class="cert-grid">
+              <div class="cert-pill">
+                <span class="cert-badge-dot"></span>
+                <span>Xero Certified Associate · Level 1</span>
+              </div>
+              <div class="cert-pill">
+                <span class="cert-badge-dot"></span>
+                <span>Xero Certified Professional · Level 2</span>
+              </div>
+              <div class="cert-pill">
+                <span class="cert-badge-dot"></span>
+                <span>Xero Payroll Specialist · AU</span>
+              </div>
+              <div class="cert-pill">
+                <span class="cert-badge-dot"></span>
+                <span>QuickBooks Online ProAdvisor</span>
+              </div>
+            </div>
+            <p class="cert-note">
+              Certifications backed by hands-on work in moving/logistics operations, QA analytics,
+              and remote admin for service-based businesses.
+            </p>
+          </aside>
+        </div>
+      </section>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section id="about">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-left">
-            <div class="hero-eyebrow">
-              <div class="hero-eyebrow-dot"></div>
-              <span>Junior accountant · bookkeeping generalist · AU / global remote</span>
-            </div>
-
-            <h1 class="hero-title">
-              A junior accountant that treats your books like
-              <span class="highlight">product infrastructure</span>, not paperwork.
-            </h1>
-
-            <p class="hero-subtitle">
-              I work across Xero, QuickBooks, and payroll to keep the numbers clean, the workflow predictable, and the
-              founder free to think about revenue and customers instead of reconciliation and compliance.
-            </p>
-
-            <div class="hero-pills">
-              <div class="pill">
-                <span>Certifications:</span>
-                <strong>Xero L1 & L2</strong>
-              </div>
-              <div class="pill">
-                <span>Stack:</span>
-                <strong>Xero · QBO · AU payroll</strong>
-              </div>
-              <div class="pill">
-                <span>Focus:</span>
-                <strong>SMBs & online businesses</strong>
-              </div>
-            </div>
-
-            <div class="hero-meta">
-              <div class="hero-meta-block">
-                <span class="hero-meta-label">Timezone Coverage</span>
-                <span class="hero-meta-value">APAC core hours · overlap with AU/NZ</span>
-              </div>
-              <div class="hero-meta-block">
-                <span class="hero-meta-label">Engagement</span>
-                <span class="hero-meta-value">Part-time · contract · remote</span>
-              </div>
-              <div class="hero-meta-block">
-                <span class="hero-meta-label">Working Style</span>
-                <span class="hero-meta-value">Asynchronous · documented · low-drama</span>
-              </div>
-            </div>
-
-            <div class="hero-cta-row">
-              <a href="#contact" class="primary-cta">
-                <span>Book a working trial month</span>
-                <span>↗</span>
-              </a>
-
-              <a href="#experience" class="secondary-cta">
-                <span>Skip to experience</span>
-                <span>↓</span>
-              </a>
-
-              <button id="audioToggle" class="audio-toggle" type="button">
-                <span class="audio-toggle-icon" id="audioIcon">🔇</span>
-                <span>Sound off</span>
-                <span class="audio-toggle-label">BG audio</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="hero-panel">
-              <div class="panel-header">
-                <div class="panel-title">
-                  <div class="panel-title-dot"></div>
-                  <span>Live accounting workspace</span>
-                </div>
-                <div class="panel-badges">
-                  <span class="panel-badge">Xero</span>
-                  <span class="panel-badge">QuickBooks</span>
-                </div>
-              </div>
-
-              <div class="panel-body">
-                <div class="panel-column">
-                  <div>
-                    <div class="small-label">Health metrics</div>
-                    <div class="metric-card">
-                      <div class="metric-card-header">
-                        <span>Reconciled this month</span>
-                        <span>90–100%</span>
-                      </div>
-                      <div class="metric-value">Up-to-date books across accounts</div>
-                      <div class="metric-trend">
-                        <span>▲</span>
-                        <span>Weekly cadence</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="small-label">Core stack</div>
-                    <div class="platform-pill-row">
-                      <div class="platform-pill">
-                        <strong>Xero</strong>
-                        <span>AU/NZ focused</span>
-                      </div>
-                      <div class="platform-pill">
-                        <strong>QuickBooks Online</strong>
-                        <span>Global clients</span>
-                      </div>
-                      <div class="platform-pill">
-                        <strong>Payroll</strong>
-                        <span>Xero AU</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel-column">
-                  <div>
-                    <div class="small-label">What I actually do</div>
-                    <ul class="focus-list">
-                      <li>
-                        <div class="focus-dot"></div>
-                        <span>Daily/weekly reconciliation and coding of transactions</span>
-                      </li>
-                      <li>
-                        <div class="focus-dot"></div>
-                        <span>Accounts payable/receivable maintenance that matches reality</span>
-                      </li>
-                      <li>
-                        <div class="focus-dot"></div>
-                        <span>Payroll runs and compliance (AU) with no surprises</span>
-                      </li>
-                      <li>
-                        <div class="focus-dot"></div>
-                        <span>Clean handoffs to your accountant at year-end</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="panel-footer">
-                    <div class="panel-footer-left">
-                      <span class="panel-footer-tag">Junior accountant</span>
-                      <span class="panel-footer-pill">
-                        <span>●</span>
-                        <span>Systems-first mindset</span>
-                      </span>
-                    </div>
-                    <div class="panel-footer-right">Built around small teams, SaaS, and online businesses.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2>About me</h2>
+        <p class="section-subtitle">
+          The real problem usually isn’t “not enough tools.” It’s scattered workflows: leads in inboxes,
+          jobs in a CRM, invoices in accounting software, and reporting in a spreadsheet no one trusts.
+        </p>
+        <p>
+          I help owners and teams fix that by building calm, reliable systems around operations, bookkeeping,
+          and automation. I’ve worked across customer service, QA, and executive support, then layered in
+          accounting skills and certifications so I can bridge what happens on the floor with what shows up
+          in Xero or QuickBooks.
+        </p>
+        <p>
+          The result is fewer dropped balls and clearer decisions: sub-30-second lead responses instead of
+          missed opportunities, quotes that tie cleanly to invoices, payroll and compensation tracking that
+          reconciles, and dashboards that surface what matters without you living in spreadsheets.
+        </p>
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <section id="services" class="section-soft">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Experience & operating model</h2>
-            <p class="section-subtitle">
-              I don’t pretend to be a 10-year CPA. I’m a junior operator who keeps the accounting backbone tight while
-              learning from senior accountants and founders.
-            </p>
-          </div>
-          <div class="pill-row">
-            <div class="pill-label">Positioning</div>
-            <div class="pill highlight-pill">Junior accountant · bookkeeping generalist</div>
-            <div class="pill">Xero & QBO focused</div>
-          </div>
-        </div>
-
-        <div class="experience-grid">
-          <div>
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <p class="card-title">How I plug into your existing setup</p>
-                  <p class="card-subtitle">Designed to reduce founder and senior accountant cognitive load.</p>
-                </div>
-                <span class="card-tag">Workflow</span>
-              </div>
-
-              <ul class="list">
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <strong>Structured onboarding sprint (2–3 weeks).</strong> Map your chart of accounts, bank feeds,
-                    payroll, key reports, and recurring workflows. Build a lightweight runbook so there’s no confusion
-                    about what “done” looks like each week.
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <strong>Weekly reconciliation & reporting rhythm.</strong> Lock in specific days for reconciliations,
-                    payables reviews, and variance checks so your numbers don’t drift and you’re not doing “finance
-                    firefighting” every month-end.
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <strong>Documentation-first collaboration.</strong> I document changes, questions, and edge cases in
-                    writing (not just chat threads), so your accountant and future team members can follow what
-                    happened, when, and why.
-                  </div>
-                </li>
-                <li class="list-item">
-                  <div class="list-bullet"></div>
-                  <div class="list-content">
-                    <strong>Clean handoffs to senior finance.</strong> Trial balances, reconciliations, and supporting
-                    schedules are packaged so your accountant can focus on high-value advisory instead of chasing
-                    missing context.
-                  </div>
-                </li>
-              </ul>
-
-              <div class="callout">
-                <div class="callout-icon">⚙️</div>
-                <div>
-                  Think of me as the operator who keeps the financial plumbing tight, so your senior finance people can
-                  do strategy instead of rework.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="sidebar-card">
-              <div class="sidebar-header">
-                <div>
-                  <p class="sidebar-title">Where I’m strongest</p>
-                  <p class="card-subtitle">And where I’m still levelling up.</p>
-                </div>
-                <span class="sidebar-pill">Honest profile</span>
-              </div>
-
-              <ul class="sidebar-list">
-                <li>
-                  <span class="sidebar-list-label">Day-to-day bookkeeping</span>
-                  <span class="sidebar-list-value">Comfortable and improving fast</span>
-                </li>
-                <li>
-                  <span class="sidebar-list-label">Xero & QuickBooks Online</span>
-                  <span class="sidebar-list-value">Certified, building reps with real data</span>
-                </li>
-                <li>
-                  <span class="sidebar-list-label">Payroll (AU)</span>
-                  <span class="sidebar-list-value">Certified; open to more complexity</span>
-                </li>
-                <li>
-                  <span class="sidebar-list-label">Tax and complex structuring</span>
-                  <span class="sidebar-list-value">Partnering with senior accountants</span>
-                </li>
-              </ul>
-
-              <p class="sidebar-footnote">
-                I’m not here to replace your tax accountant. I’m here to make sure what they get from you is clean,
-                timely, and easy to work with.
-              </p>
-            </div>
-          </div>
-        </div>
+        <h2>Services</h2>
+        <p class="section-subtitle">
+          Engagements are scoped around your tools, volume, and gaps. Typical work combines bookkeeping,
+          operations, and light automation.
+        </p>
+        <ul>
+          <li><strong>Bookkeeping & finance ops</strong> — monthly books in Xero/QBO, invoice monitoring, AR follow-ups, basic AP, reconciliations, and payroll/compensation tracking.</li>
+          <li><strong>Quote-to-cash for service businesses</strong> — structuring estimates, jobs, and invoices so every job can be traced from inquiry to payment.</li>
+          <li><strong>Operations & EA support</strong> — inbox and calendar management, travel and vendor coordination, file organization, SOPs, and documentation.</li>
+          <li><strong>Lead handling & light sales ops</strong> — SMS/email lead response, Gmail filters/labels, and simple CRM flows in tools like Supermove, RingCentral, PhoneBurner.</li>
+          <li><strong>Analytics & reporting</strong> — Excel and Power BI dashboards (iQor experience) for revenue, margins, QA metrics, and operational KPIs.</li>
+          <li><strong>Custom systems & automation</strong> — workflows and documentation tailored to your stack, not copied from a generic playbook.</li>
+        </ul>
       </div>
     </section>
 
-    <section id="systems" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Systems, tooling, and habits</h2>
-            <p class="section-subtitle">
-              A junior accountant is only as good as their systems. I lean heavily on structure, documentation, and
-              clear communication.
-            </p>
-          </div>
-          <div class="pill-row">
-            <div class="pill-label">Principles</div>
-            <div class="pill highlight-pill">Boring, reliable systems over clever hacks</div>
-            <div class="pill">Default to written updates</div>
-          </div>
-        </div>
-
-        <div class="two-column">
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <p class="card-title">Tooling & platforms</p>
-                <p class="card-subtitle">Practical stack for small teams and online businesses.</p>
-              </div>
-              <span class="card-tag">Stack</span>
-            </div>
-
-            <div class="stack">
-              <div>
-                <div class="stack-label">Accounting platforms</div>
-                <div class="stack-row">
-                  <div class="stack-pill">
-                    <strong>Xero</strong>
-                    <span>Core ledger & AU payroll</span>
-                  </div>
-                  <div class="stack-pill">
-                    <strong>QuickBooks Online</strong>
-                    <span>SMBs & service businesses</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="stack-label">Collaboration & workflow</div>
-                <div class="stack-row">
-                  <div class="stack-pill">
-                    <strong>Docs</strong>
-                    <span>Notion / Google Docs for playbooks</span>
-                  </div>
-                  <div class="stack-pill">
-                    <strong>Tasks</strong>
-                    <span>Simple checklists and recurring tasks</span>
-                  </div>
-                  <div class="stack-pill">
-                    <strong>Async updates</strong>
-                    <span>Weekly summaries over calls where possible</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div class="stack-label">Quality & controls</div>
-                <div class="stack-row">
-                  <div class="stack-pill">
-                    <strong>Versioned changes</strong>
-                    <span>Track adjustments and why they happened</span>
-                  </div>
-                  <div class="stack-pill">
-                    <strong>Checklists</strong>
-                    <span>Month-end and quarter-end checklists</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="callout">
-              <div class="callout-icon">📡</div>
-              <div>
-                My bias is for simple, understandable setups your future team can inherit — not complex dashboards that
-                no one maintains.
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <p class="card-title">How I communicate</p>
-                <p class="card-subtitle">Clear, low-noise communication so you always know where things stand.</p>
-              </div>
-              <span class="card-tag">Operating habits</span>
-            </div>
-
-            <ul class="list">
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Weekly written updates.</strong> One summary covering what was done, what’s pending, and any
-                  decisions or inputs needed from you — not scattered messages.
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Documented decisions.</strong> When we change a process, I update the written runbook so we
-                  don’t forget why we did it that way three months later.
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Escalation instead of guessing.</strong> If something is unclear or high-risk, I escalate
-                  quickly rather than silently making assumptions.
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Respect for founders’ attention.</strong> I batch questions and updates so you’re not pulled
-                  into context-switching all week.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS SECTION wired to assets/images/... -->
+    <!-- CERTIFICATIONS SECTION -->
     <section id="certifications">
       <div class="container">
         <h2>Certifications</h2>
         <p class="section-subtitle">
-          Accounting platforms and payroll are core infrastructure. These are the credentials that back the systems
-          work.
+          Accounting platforms and payroll are core infrastructure. These are the credentials that back the systems work.
         </p>
 
         <div class="certifications-grid">
@@ -1741,10 +918,10 @@
           <article class="cert-card">
             <div class="cert-logo-wrap">
               <img
-                src="assets/images/xero-certified-associate-l1.png"
+                src="images/L1 Xero certified associate _ Xero_page-0001 (1).jpg"
                 alt="Xero Certified Associate Level 1 certificate — John Jevi dela Cruz"
                 class="cert-logo"
-              />
+              >
             </div>
             <div class="cert-title">Xero Certified Associate · Level 1</div>
             <div class="cert-meta">
@@ -1756,10 +933,10 @@
           <article class="cert-card">
             <div class="cert-logo-wrap">
               <img
-                src="assets/images/xero-certified-professional-l2.png"
+                src="images/XCL_PrintCertificate_page-0001.jpg"
                 alt="Xero Certified Professional Level 2 certificate — John Jevi dela Cruz"
                 class="cert-logo"
-              />
+              >
             </div>
             <div class="cert-title">Xero Certified Professional · Level 2</div>
             <div class="cert-meta">
@@ -1771,25 +948,25 @@
           <article class="cert-card">
             <div class="cert-logo-wrap">
               <img
-                src="assets/images/xero-payroll-specialist.png"
-                alt="Xero Payroll Specialist AU certificate — John Jevi dela Cruz"
+                src="images/Payroll specialist.png"
+                alt="Xero Payroll Specialist AU badge"
                 class="cert-logo"
-              />
+              >
             </div>
             <div class="cert-title">Xero Payroll Specialist – AU</div>
             <div class="cert-meta">
-              Australian payroll setup, leave, and compliance · Cert date 15/11/2025
+              Australian payroll setup, leave, and compliance
             </div>
           </article>
 
-          <!-- QuickBooks Online Certification -->
+          <!-- QuickBooks Online ProAdvisor -->
           <article class="cert-card">
             <div class="cert-logo-wrap">
               <img
-                src="assets/images/qb-online-certification.png"
-                alt="QuickBooks Online Accountant Certification — John Jevi dela Cruz"
+                src="images/QB Online2X_7561.png"
+                alt="QuickBooks Online ProAdvisor badge"
                 class="cert-logo"
-              />
+              >
             </div>
             <div class="cert-title">QuickBooks Online Accountant Certification</div>
             <div class="cert-meta">
@@ -1800,265 +977,366 @@
       </div>
     </section>
 
-    <section id="testimonials" class="section">
+    <!-- Why work with me -->
+    <section id="why-choose-us" class="section-soft">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">How I aim to show up</h2>
-            <p class="section-subtitle">
-              Until I have more client testimonials, here’s the standard I hold myself to and how I want founders and
-              accountants to describe working with me.
+        <h2>Why work with me</h2>
+        <p class="section-subtitle">
+          I’m not just logging transactions or answering emails. I’m designing how work moves through your
+          system so it’s faster, cleaner, and easier to see.
+        </p>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎓</div>
+            <h3>Certified where it counts</h3>
+            <p>
+              Xero Certified (L1 &amp; L2), Xero Payroll Specialist – AU, and QuickBooks Online ProAdvisor.
+              That translates into configurations and workflows that respect how the tools actually work.
             </p>
-          </div>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔁</div>
+            <h3>Ops + numbers, not either/or</h3>
+            <p>
+              Experience spans dispatch and bookings, inbox and SMS handling, QA analytics, and finance ops.
+              I understand why something broke operationally, not just where the numbers ended up.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Lead and revenue protection</h3>
+            <p>
+              At Dan The Moving Man, sub-30-second responses and structured estimates prevented 52 lead fallouts
+              and booked 12 jobs in four months, while inbox automation improved response speed by ~20%.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📈</div>
+            <h3>Reporting that people actually use</h3>
+            <p>
+              Built Power BI and Excel dashboards (iQor) that supported 100+ audits/week, improved team
+              performance by +2–3 points, and removed 10+ hours of manual reporting per month.
+            </p>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section-soft">
+      <div class="container">
+        <h2>Client notes</h2>
+        <p class="section-subtitle">
+          Most of the feedback is simple: fewer fires, cleaner numbers, and the sense that someone is actually
+          watching the system.
+        </p>
 
         <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <div>
-                <div class="testimonial-name">Founder perspective (target)</div>
-                <div class="testimonial-role">Small online business · AU-based</div>
-              </div>
-              <span class="testimonial-badge">Operations</span>
-            </div>
-            <div class="testimonial-body">
-              “The books stopped being a source of anxiety. Things just quietly got reconciled each week, and when there
-              was a question, it came with options, not just a problem.”
-            </div>
-            <div class="testimonial-footer">Goal: predictable, low-drama finance backbone.</div>
-          </div>
+          <figure class="testimonial-card" aria-label="Client testimonial">
+            <blockquote>
+              “Our lead handling stopped being guesswork. Responses were fast, quotes were consistent, and the
+              hand-off into jobs and invoices finally felt controlled instead of chaotic.”
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-name">Service Business Owner</span>
+              <span class="testimonial-role">Moving &amp; Logistics</span>
+            </figcaption>
+          </figure>
 
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <div>
-                <div class="testimonial-name">Accountant perspective (target)</div>
-                <div class="testimonial-role">External CPA / tax advisor</div>
-              </div>
-              <span class="testimonial-badge">Collaboration</span>
-            </div>
-            <div class="testimonial-body">
-              “Year-end was straightforward. The ledger was clean, questions were documented, and we weren’t digging
-              through chat logs to understand adjustments.”
-            </div>
-            <div class="testimonial-footer">Goal: make senior finance work easier and more valuable.</div>
-          </div>
+          <figure class="testimonial-card" aria-label="Client testimonial">
+            <blockquote>
+              “He doesn’t just tick boxes. He builds out the workflow, documents it, and leaves you with something
+              you can grow on.”
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-name">Operations Lead</span>
+              <span class="testimonial-role">Customer Experience / QA</span>
+            </figcaption>
+          </figure>
 
-          <div class="testimonial-card">
-            <div class="testimonial-header">
-              <div>
-                <div class="testimonial-name">Team perspective (target)</div>
-                <div class="testimonial-role">Ops / admin teammates</div>
-              </div>
-              <span class="testimonial-badge">Team fit</span>
-            </div>
-            <div class="testimonial-body">
-              “Reliable, calm, and clear in communication. Not trying to be the loudest voice in the room, but the work
-              is consistently handled and documented.”
-            </div>
-            <div class="testimonial-footer">Goal: be the junior team member others are happy to hand work to.</div>
-          </div>
+          <figure class="testimonial-card" aria-label="Client testimonial">
+            <blockquote>
+              “Having someone who sees both the frontline and the financial view has made our decisions faster
+              and less stressful.”
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-name">Founder</span>
+              <span class="testimonial-role">Online Business</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="section">
+    <section id="pricing">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">FAQ</h2>
-            <p class="section-subtitle">Straight answers to obvious questions.</p>
-          </div>
-        </div>
+        <h2>Packages</h2>
+        <p class="section-subtitle">
+          Starting points. We’ll scope based on your actual volume and tool stack.
+        </p>
+        <ul>
+          <li><strong>Bookkeeping essentials</strong> — monthly Xero/QBO books, reconciliations, simple reporting, and light AR follow-up.</li>
+          <li><strong>Ops &amp; finance bundle</strong> — bookkeeping plus inbox/lead handling, quote-to-cash workflow design, and KPI tracking.</li>
+          <li><strong>Systems &amp; automation build-out</strong> — bespoke mix of finance ops, QA-style analytics, SOPs, and automations tailored to your environment.</li>
+        </ul>
+        <button
+          type="button"
+          class="cta-button"
+          onclick="openQuoteModal()"
+        >
+          Request a fit call / quote
+        </button>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section-soft">
+      <div class="container">
+        <h2>FAQ</h2>
+        <p class="section-subtitle">
+          If your question isn’t here, include it in the form. The more context, the better the scope.
+        </p>
 
         <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-question">What kind of engagement are you looking for?</div>
-            <div>
-              Ideally a part-time, remote role where I can own the bookkeeping backbone (Xero/QBO, payroll, AP/AR) with
-              a clear reporting line to a founder or senior accountant.
+          <article class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What kinds of businesses do you typically work with?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Service-based businesses: moving and logistics, agencies, BPO/outsourcing teams, and online
+                businesses that need someone to own the back-end across ops, numbers, and reporting.
+              </p>
             </div>
-          </div>
+          </article>
 
-          <div class="faq-item">
-            <div class="faq-question">Do you work with accountants or directly with founders?</div>
-            <div>
-              Both. I’m comfortable being the internal “hands on keyboard” for a founder while collaborating with their
-              external accountant, or working as part of an accounting firm’s delivery team.
+          <article class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Will you replace my accountant?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                No. Think of me as finance operations and systems: I keep the day-to-day clean and traceable so
+                your accountant and tax advisors can do higher-level work with better data.
+              </p>
             </div>
-          </div>
+          </article>
 
-          <div class="faq-item">
-            <div class="faq-question">How do you prefer to communicate?</div>
-            <div>
-              Written first: clear weekly updates, concise questions, and documented changes. I’m happy to do calls when
-              needed, but I try not to make meetings the default.
+          <article class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Which tools do you work in?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Xero, QuickBooks Online, Excel, Google Sheets, Supermove, RingCentral, PhoneBurner, Gmail,
+                Google Drive, Power BI (iQor), and common collaboration tools like Google Workspace and Slack.
+              </p>
             </div>
-          </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How do we get started?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              <p>
+                Start with a short fit call. You outline your business, tools, and where things feel messy.
+                I’ll come back with a clear recommendation and scope—no fluff, just what’s required to fix the system.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Let’s run a trial month</h2>
-            <p class="section-subtitle">
-              The best way to see if this works is to do a scoped, low-risk trial month with clear deliverables and
-              check-ins.
-            </p>
-          </div>
-        </div>
-
-        <div class="two-column">
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <p class="card-title">Proposed trial structure</p>
-                <p class="card-subtitle">A simple, time-boxed way to test fit.</p>
-              </div>
-              <span class="card-tag">Trial month</span>
-            </div>
-
-            <ul class="list">
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Week 1: Onboarding & mapping.</strong> Understand your current setup, chart of accounts, key
-                  reports, and pain points. Document the baseline.
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Week 2–3: Live bookkeeping.</strong> Take on reconciliations, AP/AR routines, and basic
-                  reporting under your or your accountant’s review.
-                </div>
-              </li>
-              <li class="list-item">
-                <div class="list-bullet"></div>
-                <div class="list-content">
-                  <strong>Week 4: Review & decision.</strong> Look at what improved, what still needs work, and decide if
-                  we extend or adjust the engagement.
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <p class="card-title">Contact details</p>
-                <p class="card-subtitle">Best way to reach me.</p>
-              </div>
-              <span class="card-tag">Contact</span>
-            </div>
-
-            <div class="stack">
-              <div>
-                <div class="stack-label">Email</div>
-                <div class="stack-row">
-                  <div class="stack-pill">
-                    <strong>Primary:</strong>
-                    <span>your-email@example.com</span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="stack-label">LinkedIn / website</div>
-                <div class="stack-row">
-                  <div class="stack-pill">
-                    <strong>LinkedIn:</strong>
-                    <span>linkedin.com/in/your-handle</span>
-                  </div>
-                  <div class="stack-pill">
-                    <strong>Portfolio:</strong>
-                    <span>this page</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="callout">
-                <div class="callout-icon">🧪</div>
-                <div>
-                  If you’d like, I can work with your accountant to define the trial month so they’re comfortable with
-                  the scope and review cadence.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2>Contact</h2>
+        <p class="section-subtitle">
+          If you’re done babysitting your back-end systems and want them to actually support growth, let’s talk.
+        </p>
+        <p>
+          Email:
+          <a href="mailto:johnjevi.delacruz@gmail.com">
+            johnjevi.delacruz@gmail.com
+          </a>
+        </p>
+        <p>
+          Or use the request form to give me a quick snapshot of your tools and pain points.
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-left">
-          <div class="footer-brand">
-            <div class="brand-pill">
-              <span>JJ</span>
-            </div>
-            <span class="footer-brand-title">John Jevi dela Cruz</span>
-          </div>
-          <p>
-            <strong>Junior accountant & bookkeeping generalist</strong> focused on Xero, QuickBooks Online, and AU
-            payroll — with a bias for clean systems and calm execution.
-          </p>
-        </div>
-        <div>
-          <div class="footer-links">
-            <a href="#experience">Experience</a>
-            <a href="#systems">Systems</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div class="footer-meta" style="margin-top: 0.6rem;">
-            <span>Based in APAC</span>
-            <span>Open to remote roles</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p>&copy; 2025 John Jevi dela Cruz. All rights reserved.</p>
+    <p>Xero Certified (L1 &amp; L2) · Xero Payroll Specialist – AU · QuickBooks Online ProAdvisor</p>
   </footer>
 
+  <!-- Quote Modal -->
+  <div id="quoteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+    <div class="modal-content">
+      <button class="close-btn" type="button" aria-label="Close quote form" onclick="closeQuoteModal()">&times;</button>
+      <h2 id="quoteModalTitle">Request a fit call / quote</h2>
+      <!-- Replace action with your own Formspree or backend endpoint -->
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" onsubmit="return validateForm()">
+        <label class="required">Name</label>
+        <input type="text" name="name" required>
+
+        <label class="required">Email</label>
+        <input type="email" name="email" required>
+
+        <label>Business / Company (optional)</label>
+        <input type="text" name="company">
+
+        <label class="required">Timezone</label>
+        <select name="timezone" required>
+          <option value="">Select timezone</option>
+          <!-- US timezones -->
+          <option value="America/Los_Angeles">US · Pacific (UTC-08:00)</option>
+          <option value="America/Denver">US · Mountain (UTC-07:00)</option>
+          <option value="America/Chicago">US · Central (UTC-06:00)</option>
+          <option value="America/New_York">US · Eastern (UTC-05:00)</option>
+          <!-- AU timezones -->
+          <option value="Australia/Perth">AU · Western (UTC+08:00)</option>
+          <option value="Australia/Adelaide">AU · Central (UTC+09:30)</option>
+          <option value="Australia/Brisbane">AU · Queensland (UTC+10:00)</option>
+          <option value="Australia/Sydney">AU · Eastern (UTC+10:00)</option>
+        </select>
+
+        <label for="additionalDetails">What do you need help with?</label>
+        <textarea
+          id="additionalDetails"
+          name="additionalDetails"
+          rows="4"
+          maxlength="1000"
+          placeholder="Tell me about your business, tools (Xero/QBO/CRM), and where things feel messy—books, leads, reporting, etc."
+        ></textarea>
+
+        <button type="submit" class="cta-button">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Back to top + audio toggle -->
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <button
+    id="audioToggle"
+    aria-pressed="false"
+    aria-label="Enable background audio"
+  >
+    🔇
+  </button>
+
   <script>
-    (function () {
-      const audio = document.getElementById("bgAudio");
-      const toggle = document.getElementById("audioToggle");
-      const icon = document.getElementById("audioIcon");
+    const quoteModal = document.getElementById('quoteModal');
 
-      if (!audio || !toggle || !icon) return;
+    function openQuoteModal() {
+      quoteModal.style.display = 'flex';
+      document.body.classList.add('modal-open');
+    }
 
+    function closeQuoteModal() {
+      quoteModal.style.display = 'none';
+      document.body.classList.remove('modal-open');
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target === quoteModal) {
+        closeQuoteModal();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeQuoteModal();
+      }
+    });
+
+    function validateForm() {
+      return true;
+    }
+
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    const faqButtons = document.querySelectorAll('.faq-question');
+
+    faqButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const answer = btn.nextElementSibling;
+
+        faqButtons.forEach((otherBtn) => {
+          if (otherBtn !== btn) {
+            otherBtn.setAttribute('aria-expanded', 'false');
+            const otherAnswer = otherBtn.nextElementSibling;
+            if (otherAnswer) otherAnswer.hidden = true;
+            const otherIcon = otherBtn.querySelector('.faq-icon');
+            if (otherIcon) otherIcon.textContent = '+';
+          }
+        });
+
+        btn.setAttribute('aria-expanded', String(!expanded));
+        answer.hidden = expanded;
+
+        const icon = btn.querySelector('.faq-icon');
+        if (icon) icon.textContent = expanded ? '−' : '+';
+      });
+    });
+
+    const audio = document.getElementById('bgAudio');
+    const audioToggle = document.getElementById('audioToggle');
+
+    if (audio && audioToggle) {
       let audioEnabled = false;
 
-      toggle.addEventListener("click", function () {
+      const updateAudioUI = () => {
+        audioToggle.setAttribute('aria-pressed', String(audioEnabled));
+        audioToggle.setAttribute(
+          'aria-label',
+          audioEnabled ? 'Mute background audio' : 'Enable background audio'
+        );
+        audioToggle.textContent = audioEnabled ? '🔊' : '🔇';
+      };
+
+      updateAudioUI();
+
+      audioToggle.addEventListener('click', () => {
         audioEnabled = !audioEnabled;
+        updateAudioUI();
 
         if (audioEnabled && audio.src) {
           audio.muted = false;
-          audio
-            .play()
-            .then(() => {
-              icon.textContent = "🔊";
-              toggle.classList.add("audio-toggle-on");
-              toggle.querySelector("span:nth-child(2)").textContent = "Sound on";
-            })
-            .catch(() => {
-              icon.textContent = "🔇";
-              toggle.classList.remove("audio-toggle-on");
-              toggle.querySelector("span:nth-child(2)").textContent = "Sound off";
-            });
+          audio.play().catch(() => {});
         } else {
           audio.muted = true;
           audio.pause();
-          icon.textContent = "🔇";
-          toggle.classList.remove("audio-toggle-on");
-          toggle.querySelector("span:nth-child(2)").textContent = "Sound off";
         }
       });
-    })();
+    }
   </script>
 </body>
 </html>
